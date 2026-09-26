@@ -1,0 +1,2 @@
+1. Link untuk fetch data :
+https://gist.githubusercontent.com/fanhdt/c79a84879456e2832d88bf3e1020895a/raw/685ed607bcb26b5ef97221247c83da569c49d3a8/course.json

@@ -1,0 +1,560 @@
+:root {
+  /* --- PALET WARNA ELECTRIC RED & OBSIDIAN --- */
+  --bg-main: #09090b; /* Deep Obsidian Black */
+  --bg-grid: #1f1f23; /* Garis Grid Overlay */
+
+  --marquee-bg: #ff2a2a; /* Top Marquee Ticker (Electric Red) */
+  --marquee-text: #000000; /* Teks Marquee (Hitam) */
+
+  --nav-bg: #09090b; /* Background Navbar */
+  --nav-border: #1f1f23; /* Border Navbar */
+
+  --text-main: #ffffff; /* Judul / Headline (White) */
+  --text-muted: #a1a1aa; /* Deskripsi Teks (Muted Silver) */
+  --text-sub: #718096; /* Label Kecil / Watermark / Barcode */
+  --text-shadow-red: #ff2a2a; /* Bayangan Teks Merah */
+
+  --btn-bg: #ff2a2a; /* Tombol (Electric Red) */
+  --btn-text: #ffffff; /* Teks Tombol (White) */
+  --btn-shadow: #ffffff; /* Bayangan 3D Tombol (White) */
+
+  --badge-yellow: #ecc94b; /* Aksesori Stiker Kuning */
+  --badge-teal: #38b2ac; /* Aksesori Stiker Teal */
+
+  /* --- VARIABEL FONT --- */
+  --font-brand: "Press Start 2P", system-ui;
+  --font-headline: "VT323", monospace;
+  --font-mono: "Space Mono", monospace;
+  --font-body: "Plus Jakarta Sans", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: none;
+  text-decoration: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* 1. LATAR BELAKANG OBSIDIAN & POLA GRID LINES */
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-main);
+  background-image:
+    linear-gradient(var(--bg-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px);
+  background-size: 35px 35px;
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+/* MARQUEE TICKER (Pita Berjalan di Atas) */
+.marquee-ticker {
+  background-color: var(--marquee-bg);
+  color: var(--marquee-text);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.35rem 0;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  z-index: 1001;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 20s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 7%;
+  background-color: var(--nav-bg);
+  border-bottom: 2px solid var(--nav-border);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+
+.navbar .logo-navbar {
+  font-family: var(--font-brand);
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo-navbar img {
+  height: 32px;
+  width: auto;
+  margin-right: 0.6rem;
+}
+
+.navbar .navbar-nav a {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-main);
+  display: inline-block;
+  font-size: 1rem;
+  margin: 0 1rem;
+  transition: 0.2s;
+}
+
+.navbar .navbar-nav a:hover {
+  color: var(--btn-bg);
+}
+
+.navbar .navbar-extra {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar .navbar-extra a {
+  color: var(--text-main);
+}
+
+#hamburger-menu {
+  display: none;
+}
+
+/* --- SEARCH FORM (POP-UP ANIMATION) --- */
+/* --- SEARCH FORM (INSTANT / TANPA ANIMASI - TEMA BRUTALIST/OBSIDIAN) --- */
+.navbar .search-form {
+  position: absolute;
+  top: 100%;
+  right: 7%;
+  background-color: var(--nav-bg);
+  width: 20rem;
+  height: 2.8rem;
+  display: none; /* Sembunyi instant tanpa animasi */
+  align-items: center;
+  border: 2px solid var(--btn-bg);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 4px 4px 0px var(--btn-bg);
+}
+
+/* Saat aktif (Langsung muncul instant) */
+.navbar .search-form.active {
+  display: flex;
+}
+
+.navbar .search-form input {
+  height: 100%;
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  padding: 0.8rem 1rem;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+/* 3. HERO SECTION & TYPOGRAPHY */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 7rem 7% 3rem;
+  gap: 3rem;
+}
+
+.hero .content {
+  flex: 1;
+  max-width: 60rem;
+}
+
+/* Judul Utama (Ojan's Portfolio) */
+.hero .content h1 {
+  font-family: var(--font-headline);
+  font-size: 4.8rem;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  color: var(--text-main);
+  text-shadow: 2px 2px var(--text-shadow-red);
+}
+
+/* Deskripsi Teks */
+.hero .content p,
+.about .row .content p,
+.course p,
+.contact p {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* Watermark / Label Sub */
+.hero-watermark {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* 4. STIKER & BADGE Y2K */
+.badge {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  border: 1px solid #000;
+}
+
+.badge-yellow {
+  background-color: var(--badge-yellow);
+  color: #000000;
+}
+
+.badge-red {
+  background-color: var(--btn-bg);
+  color: #ffffff;
+}
+
+.badge-teal {
+  background-color: var(--badge-teal);
+  color: #000000;
+}
+
+/* 5. TOMBOL AKSI UTAMA (View Catalogue) */
+.cta,
+.btn-primary {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 1.8rem;
+  display: inline-block;
+  padding: 0.9rem 2.2rem;
+  color: var(--btn-text);
+  background-color: var(--btn-bg);
+  border: 2px solid #000000;
+  border-radius: 4px;
+  box-shadow: 4px 4px 0px var(--btn-shadow);
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
+}
+
+/* Efek Hover Tombol */
+.cta:hover,
+.btn-primary:hover {
+  background-color: #ffffff;
+  color: #000000;
+  box-shadow: 6px 6px 0px var(--btn-bg);
+  transform: translate(-2px, -2px);
+}
+
+.cta:active,
+.btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--btn-bg);
+}
+
+/* 6. HERO IMAGE / FOTO PROFIL */
+.hero .hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero .hero-image img {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  object-fit: cover;
+  object-position: center;
+  background-color: var(--nav-bg);
+  border: 2px solid var(--nav-border);
+  border-radius: 12px;
+  box-shadow: 8px 8px 0px var(--btn-bg);
+}
+
+/* SECTIONS (About, Services, Contact) */
+.about,
+.course,
+.contact {
+  padding: 7rem 7% 2rem;
+}
+
+.about h2,
+.course h2,
+.contact h2 {
+  font-family: var(--font-headline);
+  letter-spacing: 2px;
+  font-size: 3.8rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: var(--text-main);
+}
+
+.about .row {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; /* Memastikan gambar & teks melebar memenuhi container */
+  gap: 2rem;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+/* GAMBAR MELEBAR SESUAI BATAS MARGIN */
+.about .row img {
+  width: 100%; /* Memenuhi lebar dari margin kiri ke margin kanan */
+  max-width: 100%; /* Menghilangkan batasan ukuran agar selebar margin */
+  height: auto; /* Tinggi menyesuaikan secara proporsional */
+  border-radius: 12px;
+  border: 2px solid var(--btn-bg);
+  box-shadow: 6px 6px 0px var(--btn-bg);
+}
+
+/* TEKS DIBUAT RATA KIRI */
+.about .row .content {
+  width: 100%;
+  max-width: 100%;
+  text-align: left; /* Tulisan dari kiri ke kanan */
+}
+
+.about .row .content h3 {
+  font-family: var(--font-headline);
+  font-size: 2.4rem;
+  color: var(--btn-bg);
+  margin-bottom: 1rem;
+  text-align: left; /* Judul "Kenapa memilih..." rata kiri */
+}
+
+.about .row .content p {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  text-align: left; /* Paragraf penjelas rata kiri */
+}
+
+/* KARTU KELAS / SERVICES */
+.course .row {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+}
+
+.menu-card {
+  background-color: var(--nav-bg);
+  border: 2px solid var(--nav-border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: 0.2s ease;
+}
+
+.menu-card:hover {
+  border-color: var(--btn-bg);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(255, 42, 42, 0.2);
+}
+
+.menu-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.menu-card-content {
+  padding: 1.4rem;
+}
+
+.menu-card-content p {
+  color: var(--text-main);
+}
+
+.menu-card-content small {
+  color: var(--text-sub);
+}
+
+.menu-card-content strong {
+  font-family: var(--font-mono);
+  color: var(--btn-bg);
+  font-size: 1.2rem;
+  margin: 0.8rem 0;
+  display: block;
+}
+
+.menu-card-content a {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  display: block;
+  text-align: center;
+  padding: 0.7rem;
+  background-color: var(--btn-bg);
+  color: #ffffff;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.menu-card-content a:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* CONTACT SECTION */
+.contact .row {
+  display: flex;
+  margin-top: 2rem;
+  background-color: var(--nav-bg);
+  border: 2px solid var(--nav-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.contact .row form {
+  flex: 1;
+  padding: 3rem 2rem;
+}
+
+.contact .row form .input-group {
+  display: flex;
+  align-items: center;
+  margin-top: 1.2rem;
+  background-color: var(--bg-main);
+  border: 1px solid var(--nav-border);
+  border-radius: 4px;
+  padding-left: 1rem;
+}
+
+.contact .row form .input-group input {
+  font-family: var(--font-body);
+  width: 100%;
+  padding: 1rem;
+  background: none;
+  color: var(--text-main);
+}
+
+.contact .row form button {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  margin-top: 1.5rem;
+  padding: 0.9rem 2.5rem;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0px var(--btn-shadow);
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.contact .row form button:hover {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--nav-bg);
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 5rem;
+  border-top: 2px solid var(--nav-border);
+}
+
+footer .links a {
+  font-family: var(--font-mono);
+  color: var(--text-main);
+  padding: 0 1rem;
+}
+
+footer .links a:hover {
+  color: var(--btn-bg);
+}
+
+footer .credit {
+  font-family: var(--font-brand);
+  font-size: 0.75rem;
+  color: var(--text-sub);
+  margin-top: 1rem;
+}
+
+footer .credit a {
+  color: var(--btn-bg);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  #hamburger-menu {
+    display: inline-block;
+  }
+
+  .navbar .navbar-nav {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background-color: var(--nav-bg);
+    width: 25rem;
+    height: 100vh;
+    transition: 0.3s ease;
+    border-left: 2px solid var(--nav-border);
+  }
+
+  .navbar .navbar-nav.active {
+    right: 0;
+  }
+
+  .navbar .navbar-nav a {
+    display: block;
+    margin: 1.5rem;
+    padding: 0.5rem;
+    font-size: 1.4rem;
+  }
+
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 9rem;
+  }
+
+  .hero .hero-image {
+    justify-content: center;
+  }
+
+  .contact .row {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 55%;
+  }
+
+  .course .row {
+    grid-template-columns: 1fr;
+  }
+}
